@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+shop.db
+venv/
+.env
+static/uploads/
+php_backend/uploads/
+php_backend/db/

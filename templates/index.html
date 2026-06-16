@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StrideShop | Online Shoe Store</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-copy">
+      <h1>StrideShop</h1>
+      <p>Sell shoes online, manage products, and view real-time order notifications from your seller dashboard.</p>
+    </div>
+    <div class="hero-actions">
+      <a class="button" href="#order-section">Place an order</a>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <section class="section" id="catalog-section">
+      <div class="section-header">
+        <h2>Available Shoes</h2>
+        <p>Browse the current catalog and place your order.</p>
+      </div>
+      <div id="productGrid" class="product-grid"></div>
+      <div id="shopMessage" class="message info hidden"></div>
+    </section>
+
+    <section class="split-section">
+      <div class="panel" id="order-section">
+        <h3>Place Your Order</h3>
+        <form id="orderForm" class="form-grid">
+          <label>
+            Select shoe
+            <select id="productSelect" required></select>
+          </label>
+          <label>
+            Quantity
+            <input type="number" id="orderQuantity" min="1" value="1" required />
+          </label>
+          <label>
+            Your name
+            <input type="text" id="customerName" placeholder="Jane Doe" required />
+          </label>
+          <label>
+            Phone number
+            <input type="tel" id="customerPhone" placeholder="0712 345 678" required />
+          </label>
+          <label>
+            Email address
+            <input type="email" id="customerEmail" placeholder="you@example.com" required />
+          </label>
+          <button type="submit" class="button">Submit Order</button>
+        </form>
+        <div id="orderStatus" class="message hidden"></div>
+      </div>
+
+      <aside class="panel seller-panel">
+        <h3>Seller Dashboard</h3>
+        <label>
+          Seller key
+          <input type="password" id="sellerKey" placeholder="Enter seller key" />
+        </label>
+        <button id="unlockSeller" class="button button-primary">Unlock Seller Area</button>
+        <div id="sellerArea" class="hidden">
+          <p class="muted">Unlock the seller area with your key to add and remove products. Delete buttons will appear on each shoe card once unlocked.</p>
+          <label>
+            Backend
+            <select id="backendSelect">
+              <option value="auto">Auto (detect)</option>
+              <option value="flask">Flask</option>
+              <option value="php">PHP</option>
+            </select>
+          </label>
+          <div class="seller-card">
+            <h4>Add a new shoe</h4>
+            <form id="productForm" class="form-grid">
+              <label>
+                Name
+                <input type="text" id="productName" placeholder="AirFlex" required />
+              </label>
+              <label>
+                Price (Ksh)
+                <input type="number" id="productPrice" min="100" placeholder="4500" required />
+              </label>
+              <label>
+                Color
+                <input type="text" id="productColor" placeholder="Black" required />
+              </label>
+              <label>
+                Tag
+                <input type="text" id="productTag" placeholder="New arrival" required />
+              </label>
+              <label>
+                Image
+                <input type="file" id="productImageFile" accept="image/*" />
+                <img id="productImagePreview" class="hidden" src="" alt="Preview" style="max-width:100%;border-radius:8px;margin-top:0.5rem;" />
+              </label>
+              <label>
+                Upload progress
+                <progress id="uploadProgress" class="hidden" value="0" max="100" style="width:100%;"></progress>
+              </label>
+              <button type="submit" class="button">Add product</button>
+            </form>
+            <div id="productStatus" class="message hidden"></div>
+          </div>
+
+          <div class="seller-card" id="sellerOrdersPanel">
+            <h4>Customer Orders</h4>
+            <div id="orderList" class="order-list"></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>StrideShop demo store · Powered by HTML, CSS, JavaScript and Python Flask.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}?v=2"></script>
+</body>
+</html>
