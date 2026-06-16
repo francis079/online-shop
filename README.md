@@ -27,6 +27,18 @@ A simple shoe store website built with HTML, CSS, JavaScript, and Python Flask.
    ```
 4. Open http://127.0.0.1:5000/
 
+## Deploy on Render
+
+1. Push your code to GitHub
+2. Go to https://render.com and create a new Web Service
+3. Connect your GitHub repository
+4. Configure the deployment:
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `gunicorn -w 4 -b 0.0.0.0:$PORT app:app`
+5. Click Deploy
+
+The app will automatically initialize the database and serve the frontend + API from a single endpoint.
+
 ## PHP backend (optional)
 
 If you prefer to run the PHP-based API instead of Flask, an alternative PHP backend is provided in `php_backend`.

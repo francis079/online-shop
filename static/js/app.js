@@ -47,11 +47,11 @@ async function fetchProducts() {
     let response;
     if (apiMode === 'flask') response = await fetch('/api/products');
     else response = await fetch('/api.php?resource=products');
-    if (!response.ok) throw new Error('Unable to load products');
+    if (!response.ok) throw new Error(`API returned ${response.status}: ${response.statusText}`);
     return await response.json();
   } catch (error) {
-    showShopMessage('Shop unavailable. Start the backend server to load products.', 'error');
-    console.error(error);
+    showShopMessage(`Shop unavailable: ${error.message}. If deployed on Render, ensure the backend is running and the database has been initialized.`, 'error');
+    console.error('Fetch error:', error);
     return [];
   }
 }
